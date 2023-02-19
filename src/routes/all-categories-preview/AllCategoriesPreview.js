@@ -1,0 +1,24 @@
+import React from "react";
+
+import { useSelector } from "react-redux";
+
+import { selectCategoriesMap } from "../../store/categories/category.selector";
+
+import CategoryPreview from "../../components/category-preview/CategoryPreview";
+
+const AllCategoriesPreview = () => {
+  const categoriesMap = useSelector(selectCategoriesMap);
+
+  return (
+    <>
+      {Object.keys(categoriesMap).map((title) => {
+        const products = categoriesMap[title];
+        return (
+          <CategoryPreview key={title} title={title} products={products} />
+        );
+      })}
+    </>
+  );
+};
+
+export default AllCategoriesPreview;
